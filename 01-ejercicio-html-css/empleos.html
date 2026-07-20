@@ -1,1 +1,147 @@
-<!-- Aquí el contenido de tu página empleos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora miles de oportunidades en el sector tecnológico. ">
+    <title>Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header class="main-header bg-ultra-dark">
+        <nav class="">
+            <h1 class="logo"><img src="" alt="">DevJobs</h1>
+            <ul class="">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="empleos.html">Empleos</a></li>
+                <li><a href="">Empresas</a></li>
+                <li><a href="">Salarios</a></li>
+            </ul>
+            <div class="">
+                <a class="btn bg-dark" href="">Subir CV</a>
+                <a href=""><img class="profile-pic" src="" alt="Foto de Perfil"></a>
+            </div>
+        </nav>
+    </header>
+    <main class="">
+        <div class="heading-section">
+            <h1>Encuentra tu próximo trabajo</h1>
+            <p>Explora miles de oportunidades en el sector tecnológico.</p>
+        </div>
+        <form id="search-form" class="search-form" action="">
+            <div class="search-form__bar">
+                <button type="submit" aria-label="Buscar" class="search-form__button">🔍</button>
+                <label for="search-form__input" class="screen-reader-only">Buscar</label>
+                <input type="text" name="" id="search-form__input" class="search-form__input" placeholder="Buscar trabajos, empresas o habilidades">
+            </div>
+            <div class="search-form__filters">
+                <div class="search-form__filters__item">
+                    <label for="technology-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
+                    <select name="" id="technology-filter" class="technology-filter">
+                        <option value="">Tecnología</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="C#">C#</option>
+                        <option value="Ruby">Ruby</option>
+                    </select>
+                </div>
+                <div class="search-form__filters__item">
+                    <label for="location-filter" class="screen-reader-only">Filtrar por ubicación</label>
+                    <select name="" id="location-filter" class="location-filter">
+                        <option value="">Ubicación</option>
+                        <option value="Remoto">Remoto</option>
+                        <option value="Madrid">Madrid</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Valencia">Valencia</option>
+                        <option value="Sevilla">Sevilla</option>
+                    </select>
+                </div>
+                <div class="search-form__filters__item">
+                    <label for="contract-type-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
+                    <select name="" id="contract-type-filter" class="contract-type-filter">
+                        <option value="">Tipo de contrato</option>
+                        <option value="Tiempo completo">Tiempo completo</option>
+                        <option value="Medio tiempo">Medio tiempo</option>
+                        <option value="Contrato">Contrato</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Pasantía">Pasantía</option>
+                    </select>
+                </div>
+                <div class="search-form__filters__item ">
+                    <label for
+                    
+                    ="experience-level-filter" class="screen-reader-only">Filtrar por nivel de experiencia</label>
+                    <select name="" id="experience-level-filter" class="experience-level-filter">
+                        <option value="">Nivel de experiencia</option>
+                        <option value="Trainee">Trainee</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Semi-Senior">Semi-Senior</option>
+                        <option value="Senior">Senior</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <section class="search-results-section">
+            <h2>Resultados de búsqueda</h2>
+            <ul id="search-results" class="search-results">
+                <li class="search-result__item" data-job-id="1" data-job-title="Ingeniero de Software" data-job-company="Tech Solutions Inc." data-job-location="Remoto" data-job-description="Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación." data-job-technologies='["JavaScript", "React", "Node.js"]' data-job-skills='["Trabajo en equipo", "Comunicación efectiva"]' data-job-contract="null" data-job-experience="null">
+                    <article class="">
+                        <div class="search-result__item__info flex-col align-start width-full">
+                            <a href="empleo.html"><h1>Ingeniero de Software</h1></a>
+                            <span>Tech Solutions Inc. | Remoto</span>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Nodejs. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.</p>
+                        </div>
+                        <button class="btn bg-primary">Aplicar</button>
+                    </article>
+                </li>
+                <li class="search-result__item" data-job-id="2" data-job-title="Analista de Datos" data-job-company="Data Driven Co." data-job-location="Ciudad de México" data-job-description="Estamos buscando un analista de datos con  experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R." data-job-technologies='["SQL", "Python", "R"]' data-job-skills='["Análisis de datos", "Visualización de datos"]' data-job-contract="null" data-job-experience="null">
+                    <article class="">
+                        <div class="search-result__item__info flex-col align-start width-full">
+                            <a href="empleo.html"><h1>Analista de Datos</h1></a>
+                            <span>Data Driven Co. | Ciudad de México</span>
+                            <p>Estamos buscando un analista de datos con  experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R.</p>
+                        </div>
+                        <button class="btn bg-primary">Aplicar</button>
+                    </article>
+                </li>
+                <li class="search-result__item" data-job-id="3" data-job-title="Desarrollador de Aplicaciones Móviles" data-job-company="Mobile Apps Ltd." data-job-location="Guadalajara" data-job-description="Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario." data-job-technologies='["Swift", "Kotlin"]' data-job-skills='["Desarrollo de aplicaciones móviles", "Interfaces de usuario"]' data-job-contract="null" data-job-experience="null">
+                    <article class="">
+                        <div class="search-result__item__info flex-col align-start width-full">
+                            <a href="empleo.html"><h1>Desarrollador de Aplicaciones Móviles</h1></a>
+                            <span>Mobile Apps Ltd. | Guadalajara</span>
+                            <p>Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario.</p>
+                        </div>
+                        <button class="btn bg-primary">Aplicar</button>
+                    </article>
+                </li>
+                <li class="search-result__item" data-job-id="4" data-job-title="Ingeniero de DevOps" data-job-company="Cloud Services SA." data-job-location="Remoto" data-job-description="Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP." data-job-technologies='["AWS", "Azure", "GCP"]' data-job-skills='["DevOps", "Automatización", "Integración continua"]' data-job-contract="null" data-job-experience="null">
+                    <article class="">
+                        <div class="search-result__item__info flex-col align-start width-full">
+                            <a href="empleo.html"><h1>Ingeniero de DevOps</h1></a>
+                            <span>Cloud Services SA. | Remoto</span>
+                            <p>Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP.</p>
+                        </div>
+                        <button class="btn bg-primary">Aplicar</button>
+                    </article>
+                </li>
+            </ul>
+            <nav>
+                <ul class="pagination flex-row">
+                    <li><a class="btn pagination__page" href="" aria-label="Página anterior">&lt</a></li>
+                    <li><a class="btn pagination__page pagination__page--current" href="" aria-current="page">1</a></li>
+                    <li><a class="btn pagination__page" href="">2</a></li>
+                    <li><a class="btn pagination__page" href="">3</a></li>
+                    <li><a class="btn pagination__page" href="">4</a></li>
+                    <li><a class="btn pagination__page" href="">5</a></li>
+                    <li><a class="btn pagination__page" href="" aria-label="Página siguiente">&gt</a></li>
+                </ul>
+            </nav>
+        </section>
+    </main>
+    <footer class="main-footer">
+        <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
+        <small class="">Sitio creado con 💙 por <a href="https://www.paosofiam.com">Paola Sofía Mendoza</a></sma>
+    </footer>
+</body>
+</html>
