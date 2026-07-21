@@ -9,87 +9,102 @@
 </head>
 <body>
     <header class="main-header bg-ultra-dark">
-        <nav class="">
-            <h1 class="logo"><img src="" alt="">DevJobs</h1>
-            <ul class="">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="empleos.html">Empleos</a></li>
-                <li><a href="">Empresas</a></li>
-                <li><a href="">Salarios</a></li>
-            </ul>
+        <!-- Nav solo debe tener los links de navegación, no todo el contenido incluido el `h1` -->
+        <!-- <nav class=""> -->
+            <!-- No hay valor en el atributo `src`. Esto hace una petición a la misma página. Ponemos una imagen o quitamos el elemento -->
+            <h1 class="logo"><!-- <img src="" alt=""> -->DevJobs</h1>
+            <!-- Podemos verlo como un UL porque es una lista de elementos, pero la función principal de esta lista es ser un menú de navegación de la página, así que podemos usar un `nav` en su lugar -->
+            <nav class="">
+                <a href="index.html">Inicio</a>
+                <!-- Podemos agregar un `aria-current="page"` para indicarle a los lectores de pantalla que ese link corresponde a la página actual en la que estamos -->
+                <a href="empleos.html" aria-current="page">Empleos</a>
+                <!-- Los links que aún no llevan a nada se suele colocar en el href="" un "#" -->
+                <a href="#">Empresas</a>
+                <a href="#">Salarios</a>
+            </nav>
             <div class="">
                 <a class="btn bg-dark" href="">Subir CV</a>
-                <a href=""><img class="profile-pic" src="assets/images/PP.jpg" alt="Foto de Perfil"></a>
+                <!-- Las imágenes siempre deben tener un width y un height. No importa que la altura y ancho lo cambiemos por CSS, esto se hace para que el navegador sepa la relación de aspecto (en este caso 1:1) y no haga algo llamado layout shift. -->
+                <a href=""><img class="profile-pic" src="assets/images/PP.jpg" alt="Foto de Perfil" width="60" height="60"></a>
             </div>
-        </nav>
+        <!-- </nav> -->
     </header>
     <main class="">
-        <div class="heading-section">
-            <h1>Encuentra tu próximo trabajo</h1>
-            <p>Explora miles de oportunidades en el sector tecnológico.</p>
-        </div>
-        <form id="search-form" class="search-form" action="">
-            <div class="search-form__bar">
-                <button type="submit" aria-label="Buscar" class="search-form__button">🔍</button>
-                <label for="search-form__input" class="screen-reader-only">Buscar</label>
-                <input type="text" name="" id="search-form__input" class="search-form__input" placeholder="Buscar trabajos, empresas o habilidades">
+        <!-- No hace falta englobar esto en un `div`, se pueden agregar los estilos al h1 y p. Lo dejo para no romper tanto los estilos pero para tener en cuenta: Si podemos aplicar estilos a elementos semánticos sin envolverlos en cajas no semánticas, es una buena manera de hacer las cosas. -->
+         <!-- Ademas, podemos englobar todo lo relacionado con las búsquedas/filtros en una sección, ya que es un bloque aparte con un caso de uso específico -->
+        <section>
+            <div class="heading-section">
+                <h1>Encuentra tu próximo trabajo</h1>
+                <p>Explora miles de oportunidades en el sector tecnológico.</p>
             </div>
-            <div class="search-form__filters">
-                <div class="search-form__filters__item">
-                    <label for="technology-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
-                    <select name="" id="technology-filter" class="technology-filter">
-                        <option value="">Tecnología</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="Python">Python</option>
-                        <option value="Java">Java</option>
-                        <option value="C#">C#</option>
-                        <option value="Ruby">Ruby</option>
-                    </select>
+            <!-- Como el formulario es de búsqueda, podemos agregar un `role="search"` -->
+            <form id="search-form" class="search-form" role="search" action="">
+                <div class="search-form__bar">
+                    <label for="search-form__input" class="screen-reader-only">Buscar</label>
+                    <!-- Luego cuando veamos JavaScript veremos que es importante agregarle un valor a `name` en los inputs. Cuando se envía el formulario el valor del input será accesible por medio del atributo `name` que pusimos -->
+                    <input type="text" name="search" id="search-form__input" class="search-form__input" placeholder="Buscar trabajos, empresas o habilidades">
+                    <!-- Los botones de búsqueda por lo general van al final (lado derecho), si lo dejas ahí y sin ningún estilo diferencial que haga pensar que es un botón, pasara como un icon -->
+                    <button type="submit" aria-label="Buscar" class="search-form__button">🔍</button>
                 </div>
-                <div class="search-form__filters__item">
-                    <label for="location-filter" class="screen-reader-only">Filtrar por ubicación</label>
-                    <select name="" id="location-filter" class="location-filter">
-                        <option value="">Ubicación</option>
-                        <option value="Remoto">Remoto</option>
-                        <option value="Madrid">Madrid</option>
-                        <option value="Barcelona">Barcelona</option>
-                        <option value="Valencia">Valencia</option>
-                        <option value="Sevilla">Sevilla</option>
-                    </select>
+                <div class="search-form__filters">
+                    <div class="search-form__filters__item">
+                        <label for="technology-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
+                        <select name="technology" id="technology-filter" class="technology-filter">
+                            <option value="">Tecnología</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="C#">C#</option>
+                            <option value="Ruby">Ruby</option>
+                        </select>
+                    </div>
+                    <div class="search-form__filters__item">
+                        <label for="location-filter" class="screen-reader-only">Filtrar por ubicación</label>
+                        <select name="location" id="location-filter" class="location-filter">
+                            <option value="">Ubicación</option>
+                            <option value="Remoto">Remoto</option>
+                            <option value="Madrid">Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Sevilla">Sevilla</option>
+                        </select>
+                    </div>
+                    <div class="search-form__filters__item">
+                        <label for="contract-type-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
+                        <select name="contract" id="contract-type-filter" class="contract-type-filter">
+                            <option value="">Tipo de contrato</option>
+                            <option value="Tiempo completo">Tiempo completo</option>
+                            <option value="Medio tiempo">Medio tiempo</option>
+                            <option value="Contrato">Contrato</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Pasantía">Pasantía</option>
+                        </select>
+                    </div>
+                    <div class="search-form__filters__item ">
+                        <!-- Saqué el salto de linea para que estuviese todo en la misma -->
+                        <label for="experience-level-filter" class="screen-reader-only">Filtrar por nivel de experiencia</label>
+                        <select name="experience" id="experience-level-filter" class="experience-level-filter">
+                            <option value="">Nivel de experiencia</option>
+                            <option value="Trainee">Trainee</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Semi-Senior">Semi-Senior</option>
+                            <option value="Senior">Senior</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="search-form__filters__item">
-                    <label for="contract-type-filter" class="screen-reader-only">Filtrar por tipo de contrato</label>
-                    <select name="" id="contract-type-filter" class="contract-type-filter">
-                        <option value="">Tipo de contrato</option>
-                        <option value="Tiempo completo">Tiempo completo</option>
-                        <option value="Medio tiempo">Medio tiempo</option>
-                        <option value="Contrato">Contrato</option>
-                        <option value="Freelance">Freelance</option>
-                        <option value="Pasantía">Pasantía</option>
-                    </select>
-                </div>
-                <div class="search-form__filters__item ">
-                    <label for
-                    
-                    ="experience-level-filter" class="screen-reader-only">Filtrar por nivel de experiencia</label>
-                    <select name="" id="experience-level-filter" class="experience-level-filter">
-                        <option value="">Nivel de experiencia</option>
-                        <option value="Trainee">Trainee</option>
-                        <option value="Junior">Junior</option>
-                        <option value="Semi-Senior">Semi-Senior</option>
-                        <option value="Senior">Senior</option>
-                    </select>
-                </div>
-            </div>
-        </form>
+            </form>
+        </section>
         <section class="search-results-section">
             <h2>Resultados de búsqueda</h2>
             <ul id="search-results" class="search-results">
+                <!-- Siempre que tenemos un `data-*="", evitemos dejar el valor null en caso de que no haya contenido que poner. Es mejor dejar el String vacío a un `null`. Por ejemplo data-job-contract="null" -> data-job-contract="" -->
                 <li class="search-result__item" data-job-id="1" data-job-title="Ingeniero de Software" data-job-company="Tech Solutions Inc." data-job-location="Remoto" data-job-description="Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación." data-job-technologies='["JavaScript", "React", "Node.js"]' data-job-skills='["Trabajo en equipo", "Comunicación efectiva"]' data-job-contract="null" data-job-experience="null">
                     <article class="">
                         <div class="search-result__item__info flex-col align-start width-full">
-                            <a href="empleo.html"><h1>Ingeniero de Software</h1></a>
-                            <span>Tech Solutions Inc. | Remoto</span>
+                            <!-- Hay muchos `h1` dentro del mismo bloque semántico (section). Ya tenemos un `h1`, un `h2`, lo ideal para seguir con el orden de importancia es agregar un `h3` para cada título -->
+                            <a href="empleo.html"><h3>Ingeniero de Software</h3></a>
+                            <!-- Small se usa para identificar que un contenido es complementario al resto. En este caso, la información que tenemos dentro de `small` es complementaria al puesto (título, descripción, etc). Así que lo podemos colocar dentro de un `small` -->
+                            <small>Tech Solutions Inc. | Remoto</small>
                             <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Nodejs. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.</p>
                         </div>
                         <button class="btn bg-primary">Aplicar</button>
@@ -98,8 +113,8 @@
                 <li class="search-result__item" data-job-id="2" data-job-title="Analista de Datos" data-job-company="Data Driven Co." data-job-location="Ciudad de México" data-job-description="Estamos buscando un analista de datos con  experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R." data-job-technologies='["SQL", "Python", "R"]' data-job-skills='["Análisis de datos", "Visualización de datos"]' data-job-contract="null" data-job-experience="null">
                     <article class="">
                         <div class="search-result__item__info flex-col align-start width-full">
-                            <a href="empleo.html"><h1>Analista de Datos</h1></a>
-                            <span>Data Driven Co. | Ciudad de México</span>
+                            <a href="empleo.html"><h3>Analista de Datos</h3></a>
+                            <small>Data Driven Co. | Ciudad de México</small>
                             <p>Estamos buscando un analista de datos con  experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R.</p>
                         </div>
                         <button class="btn bg-primary">Aplicar</button>
@@ -108,8 +123,8 @@
                 <li class="search-result__item" data-job-id="3" data-job-title="Desarrollador de Aplicaciones Móviles" data-job-company="Mobile Apps Ltd." data-job-location="Guadalajara" data-job-description="Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario." data-job-technologies='["Swift", "Kotlin"]' data-job-skills='["Desarrollo de aplicaciones móviles", "Interfaces de usuario"]' data-job-contract="null" data-job-experience="null">
                     <article class="">
                         <div class="search-result__item__info flex-col align-start width-full">
-                            <a href="empleo.html"><h1>Desarrollador de Aplicaciones Móviles</h1></a>
-                            <span>Mobile Apps Ltd. | Guadalajara</span>
+                            <a href="empleo.html"><h3>Desarrollador de Aplicaciones Móviles</h3></a>
+                            <small>Mobile Apps Ltd. | Guadalajara</small>
                             <p>Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario.</p>
                         </div>
                         <button class="btn bg-primary">Aplicar</button>
@@ -118,15 +133,15 @@
                 <li class="search-result__item" data-job-id="4" data-job-title="Ingeniero de DevOps" data-job-company="Cloud Services SA." data-job-location="Remoto" data-job-description="Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP." data-job-technologies='["AWS", "Azure", "GCP"]' data-job-skills='["DevOps", "Automatización", "Integración continua"]' data-job-contract="null" data-job-experience="null">
                     <article class="">
                         <div class="search-result__item__info flex-col align-start width-full">
-                            <a href="empleo.html"><h1>Ingeniero de DevOps</h1></a>
-                            <span>Cloud Services SA. | Remoto</span>
+                            <a href="empleo.html"><h3>Ingeniero de DevOps</h3></a>
+                            <small>Cloud Services SA. | Remoto</small>
                             <p>Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP.</p>
                         </div>
                         <button class="btn bg-primary">Aplicar</button>
                     </article>
                 </li>
             </ul>
-            <nav>
+            <nav>   
                 <ul class="pagination flex-row">
                     <li><a class="btn pagination__page" href="" aria-label="Página anterior">&lt</a></li>
                     <li><a class="btn pagination__page pagination__page--current" href="" aria-current="page">1</a></li>
@@ -141,7 +156,7 @@
     </main>
     <footer class="main-footer">
         <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
-        <small class="">Sitio creado con 💙 por <a href="https://www.paosofiam.com">Paola Sofía Mendoza</a></sma>
+        <small class="">Sitio creado con 💙 por <a href="https://www.paosofiam.com">Paola Sofía Mendoza</a></small>
     </footer>
 </body>
 </html>
