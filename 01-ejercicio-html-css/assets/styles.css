@@ -140,9 +140,13 @@ body {
 /* BEM */
     /* Main Header & Footer */
 header.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     position: sticky;
     top: 0;
-    /* margin-top: 5rem; */
     padding: 1rem 2rem;
     border-bottom: solid 1px var(--border);
     z-index: 2;
@@ -167,14 +171,20 @@ header.main-header {
             justify-content: center;
             gap: 2rem;
         }
+    }
 
-        div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: end;
-            gap: 1rem;
-        }
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        gap: 1rem;
+    }
+
+    nav:not(:has(ul)) {
+        width: auto;
+        gap: 2rem;
+        justify-content: center;
     }
 
     a:hover, a:focus {
@@ -293,10 +303,16 @@ section#por-que-devjobs {
 .search-form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 0 1rem;
+    margin: 0 auto;
+    max-width: 1280px;
+
+    &:not(.search-form--bar) {
+        width: 100%;
+        max-width: 800px;
+    }
 
     &.search-form--bar {
         flex-direction: row;
@@ -403,11 +419,11 @@ section#por-que-devjobs {
                     justify-content: start;
                     gap: 1rem;
 
-                    h1 {
+                    :is(h1, h3) {
                         font-size: 1.5rem;
                     }
 
-                    span {
+                    small {
                         color: var(--text-secondary);
                         font-size: 0.875rem;
                     }
