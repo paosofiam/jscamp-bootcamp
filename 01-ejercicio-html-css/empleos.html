@@ -12,7 +12,22 @@
         <!-- Nav solo debe tener los links de navegación, no todo el contenido incluido el `h1` -->
         <!-- <nav class=""> -->
             <!-- No hay valor en el atributo `src`. Esto hace una petición a la misma página. Ponemos una imagen o quitamos el elemento -->
-            <h1 class="logo"><!-- <img src="" alt=""> -->DevJobs</h1>
+            <h1 class="logo">
+                <svg
+                    height="36"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                DevJobs
+            </h1>
             <!-- Podemos verlo como un UL porque es una lista de elementos, pero la función principal de esta lista es ser un menú de navegación de la página, así que podemos usar un `nav` en su lugar -->
             <nav class="">
                 <a href="index.html">Inicio</a>
@@ -29,14 +44,12 @@
             </div>
         <!-- </nav> -->
     </header>
-    <main class="">
+    <main>
         <!-- No hace falta englobar esto en un `div`, se pueden agregar los estilos al h1 y p. Lo dejo para no romper tanto los estilos pero para tener en cuenta: Si podemos aplicar estilos a elementos semánticos sin envolverlos en cajas no semánticas, es una buena manera de hacer las cosas. -->
          <!-- Ademas, podemos englobar todo lo relacionado con las búsquedas/filtros en una sección, ya que es un bloque aparte con un caso de uso específico -->
-        <section>
-            <div class="heading-section">
-                <h1>Encuentra tu próximo trabajo</h1>
-                <p>Explora miles de oportunidades en el sector tecnológico.</p>
-            </div>
+        <section  class="section-margin">
+            <h1>Encuentra tu próximo trabajo</h1>
+            <p class="p-margin">Explora miles de oportunidades en el sector tecnológico.</p>
             <!-- Como el formulario es de búsqueda, podemos agregar un `role="search"` -->
             <form id="search-form" class="search-form" role="search" action="">
                 <div class="search-form__bar">

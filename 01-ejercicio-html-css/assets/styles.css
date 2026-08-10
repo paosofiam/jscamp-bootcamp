@@ -114,6 +114,16 @@ body {
     background-color: var(--background);
 }
 
+    /* Margin */
+.section-margin{
+    margin: 2rem 1rem 0 1rem;
+}
+
+.p-margin{
+    margin: 1rem;
+    text-align: center;
+}
+
     /* Text Colors */
 .btn{
     min-height: 3rem;
@@ -152,6 +162,11 @@ header.main-header {
     z-index: 2;
 
     .logo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
         font-size: 1.5rem;
         font-weight: 700;
     }
@@ -271,6 +286,7 @@ section#por-que-devjobs {
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 2rem;
     }
 
@@ -363,6 +379,7 @@ section#por-que-devjobs {
         flex-direction: row;
         align-items: center;
         justify-content: start;
+        flex-wrap: wrap;
         gap: 1rem;
 
         .search-form__filters__item {
@@ -486,4 +503,8 @@ section#por-que-devjobs {
             margin-left: auto;
         }
     }
+}
+
+@media screen and (min-width: 780px) {
+
 }
