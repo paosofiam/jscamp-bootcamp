@@ -31,7 +31,7 @@ export function filterPaginateJobs(results, search, technology, location, contra
 
 /* -------------------- or... -------------------- */
 
-const searchForm = document.getElementById('search-form');
+/* const searchForm = document.getElementById('search-form');
 
 const searchInput = document.getElementById('search-form__bar__input');
 const technologyFilter = document.getElementById('technology-filter');
@@ -42,7 +42,7 @@ const experienceLevelFilter = document.getElementById('experience-level-filter')
 
 searchForm?.addEventListener('change', () => {
     const jobs = document.querySelectorAll('#search-results li.search-result__item');
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.toLowerCase().trim();
     const technology = technologyFilter.value;
     const location = locationFilter.value;
     const contract = contractTypeFilter.value;
@@ -81,4 +81,4 @@ searchForm?.addEventListener('submit', (event) => {
             job.classList.add('hidden');
         }
     });
-});
+}); */

@@ -1,11 +1,11 @@
-
-import { readFilters, filterPaginateJobs } from './filters.js';
-import { printResults, handlePageChange } from './print.js';
-import { jobsData } from './fetch-data.js';
+import './fetch-data.js';
+/* import { printResults, handlePageChange } from './print.js';
+import { readFilters, filterPaginateJobs } from './filters.js'; */
+import './apply-button.js';
 
 const params = new URLSearchParams(window.location.search);
 const searchQuery = params.get('search');
-
-document.getElementById('search-form__bar__input')?.value = searchQuery || '';
-
-alert("hello word!");
+const inputElement = document.getElementById('search-form__input');
+if (inputElement) {
+  inputElement.value = searchQuery || '';
+}
