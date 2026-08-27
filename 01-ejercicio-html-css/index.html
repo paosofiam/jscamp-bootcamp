@@ -9,19 +9,32 @@
 </head>
 <body>
     <header class="main-header bg-ultra-dark">
-        <nav class="">
-            <h1 class="logo"><img src="" alt="">DevJobs</h1>
-            <ul class="">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="empleos.html">Empleos</a></li>
-                <li><a href="">Empresas</a></li>
-                <li><a href="">Salarios</a></li>
-            </ul>
-            <div class="">
+            <h1 class="logo">
+                <svg
+                    height="36"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                DevJobs
+            </h1>
+            <nav class="menu-nav">
+                <a href="index.html" aria-current="page">Inicio</a>
+                <a href="empleos.html">Empleos</a>
+                <a href="#">Empresas</a>
+                <a href="#">Salarios</a>
+            </nav>
+            <div class="session-nav">
                 <a class="btn bg-dark" href="">Subir CV</a>
-                <a href=""><img class="profile-pic" src="assets/images/PP.jpg" alt="Foto de Perfil"></a>
+                <a href=""><img class="profile-pic" src="assets/images/PP.jpg" alt="Foto de Perfil" width="60" height="60"></a>
             </div>
-        </nav>
     </header>
     <main>
         <section>
@@ -45,7 +58,7 @@
         <section id="por-que-devjobs" class="">
             <header>
                 <h2>¿Por qué DevJobs?</h2>
-                <p>DevJobs es la principal plataforma de búsqueda de empleo para desarrolladores. Conectamos a los mejores
+                <p class="p-margin">DevJobs es la principal plataforma de búsqueda de empleo para desarrolladores. Conectamos a los mejores
                     talentos con las empresas más innovadoras.</p>
             </header>
         
