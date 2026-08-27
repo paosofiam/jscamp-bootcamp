@@ -13,14 +13,16 @@ const searchForm = document.getElementById('search-form');
 const jobsList = document.getElementById('search-results');
 const pageControls = document.getElementById('pagination');
 
+//let jobsData = [];
+
 fetch('./data.json')
     .then((response) => {
         return response.json();
     })
     .then(jobs => {
         const jobsData = jobs;
-        console.log('jobsData:', jobsData);
-        const pagedJobs = filterPaginateJobs(jobs, null, null, null, null, null, 3);
+        //console.log('jobsData:', jobsData);
+        const pagedJobs = filterPaginateJobs(jobsData, null, null, null, null, null, 3);
         printResults(jobsList, pageControls, pagedJobs, 1);
     })
     .catch(error => console.error('Error al cargar los datos:', error));
@@ -43,6 +45,6 @@ pageControls?.addEventListener('click', function (event) {
     event.preventDefault();
     if (event.target && event.target.tagName === 'BUTTON' && event.target.classList.contains('pagination__page')) {
         const pageNumber = parseInt(event.target.dataset.toPage);
-        handlePageChange(jobsData,jobsList, pageControls, pageNumber);
+        //handlePageChange(jobsData,jobsList, pageControls, pageNumber);
     }
 });

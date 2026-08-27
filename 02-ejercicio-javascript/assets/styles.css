@@ -63,32 +63,8 @@ li {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
-}
-
-/* Layout */
-    /* Elements */
-body {
-    font-family: var(--font-family);
-    background-color: var(--background);
-    color: var(--text-primary);
-    min-height: 100vh;
-
-    &>header {
-        width: 100%;
-    }
-
-    main>section {
-        p, h1, h2, form, ul {
-            max-width: 1280px;
-        }
-    }
-
-    &>footer {
-        padding: 3rem;
-        border-top: solid 1px var(--border);
-    }
 }
 
 /* Skins / Utility classes */
@@ -114,6 +90,11 @@ body {
     background-color: var(--background);
 }
 
+.p-margin{
+    margin: 1rem;
+    text-align: center;
+}
+
     /* Text Colors */
 .btn{
     min-height: 3rem;
@@ -137,52 +118,94 @@ body {
     overflow: hidden;
 }
 
+    /* Margin */
+.section-margin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 1rem 0 1rem;
+}
+
+/* Layout */
+    /* Elements */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background);
+    color: var(--text-primary);
+    min-height: 100vh;
+
+    &>header {
+        width: 100%;
+    }
+
+
+    &>footer {
+        padding: 3rem;
+        border-top: solid 1px var(--border);
+    }
+}
+
 /* BEM */
     /* Main Header & Footer */
 header.main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    row-gap: 1rem;
     position: sticky;
     top: 0;
-    /* margin-top: 5rem; */
     padding: 1rem 2rem;
     border-bottom: solid 1px var(--border);
     z-index: 2;
 
-    h1.logo{
+    .logo {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
+        column-gap: 1rem;
         font-size: 1.5rem;
         font-weight: 700;
     }
 
     nav {
-        display: flex;
-        flex-direction: row;
+        display: none; /* Note: since this exercise does not include javascript, this section is hidden until javascript is available to implement a toggle menu */
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
+        column-gap: 1rem;
+        row-gap: .5rem;
         width: 100%;
 
         ul {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
-        }
-
-        div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: end;
-            gap: 1rem;
+            column-gap: 2rem;
+            row-gap: .5rem;
         }
     }
 
-    a:hover, a:focus {
+    div {
+        display: none; /* Note: since this exercise does not include javascript, this section is hidden until javascript is available to implement a toggle menu */
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        column-gap: 1rem;
+        row-gap: .5rem;
+    }
+
+    nav:not(:has(ul)) {
+        width: auto;
+        column-gap: 2rem;
+        justify-content: center;
+    }
+
+    a:hover,
+    a:focus {
         color: var(--primary-hover);
     }
 
@@ -206,7 +229,10 @@ footer.main-footer {
         flex-direction: row;
         align-items: baseline;
         justify-content: center;
+        flex-wrap: wrap;
         color: var(--text-muted);
+        text-align: center;
+        column-gap: .5rem;
     }
 }
         /* Hero */
@@ -218,6 +244,7 @@ footer.main-footer {
     height: 500px;
     position: relative;
     overflow: hidden;
+    padding: 2rem 1rem;
     
 
     .hero__background {
@@ -231,12 +258,16 @@ footer.main-footer {
         mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 0%, rgba(16, 25, 34, 0) 50%);
     }
 
-    .hero__content{
+    .hero__content {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 1rem;
+
+        p {
+            text-align: center;
+        }
     }
 }
 
@@ -266,6 +297,7 @@ section#por-que-devjobs {
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 2rem;
     }
 
@@ -298,10 +330,16 @@ section#por-que-devjobs {
 .search-form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 0 1rem;
+    margin: 0 auto;
+    max-width: 1280px;
+
+    &:not(.search-form--bar) {
+        width: 100%;
+        max-width: 800px;
+    }
 
     &.search-form--bar {
         flex-direction: row;
@@ -314,7 +352,7 @@ section#por-que-devjobs {
         div {
             display: flex;
             flex-direction: row;
-            gap: 1rem;
+            column-gap: .5em;
             width: 80%;
         }
     }
@@ -323,7 +361,7 @@ section#por-que-devjobs {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: start;
+        justify-content: space-between;
         gap: 1rem;
         width: 100%;
         padding: 0.5rem 1rem;
@@ -336,7 +374,8 @@ section#por-que-devjobs {
         border: none;
         outline: none;
         font-size: 1rem;
-        width: 90%;
+        width: 135px;
+        text-overflow: ellipsis;
     }
 
     .search-form__button {
@@ -352,7 +391,8 @@ section#por-que-devjobs {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: start;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 1rem;
 
         .search-form__filters__item {
@@ -397,10 +437,11 @@ section#por-que-devjobs {
 
             article {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: start;
                 justify-content: space-between;
-                gap: 4rem;
+                column-gap: 4rem;
+                row-gap: 1rem;
 
                 .search-result__item__info {
                     display: flex;
@@ -409,22 +450,13 @@ section#por-que-devjobs {
                     justify-content: start;
                     gap: 1rem;
 
-                    h1 {
+                    :is(h1, h3) {
                         font-size: 1.5rem;
                     }
 
-                    span {
+                    small {
                         color: var(--text-secondary);
                         font-size: 0.875rem;
-                    }
-                }
-
-                button.btn {
-                    background-color: var(--primary-light);
-
-                    &.is-applied {
-                        background: var(--green);
-                        pointer-events: none;
                     }
                 }
             }
@@ -442,7 +474,7 @@ section#por-que-devjobs {
     grid-template-columns: repeat(7, 3rem);
     justify-content: center;
 
-    gap: 0.5rem;
+    gap: 0rem;
 
     .pagination__page:hover, .pagination__page:focus {
         background-color: white;
@@ -484,5 +516,73 @@ section#por-que-devjobs {
         button {
             margin-left: auto;
         }
+    }
+}
+
+@media screen and (min-width: 780px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    body main>section {
+        p, h1, h2, form, ul {
+            max-width: 1280px;
+        }
+    }
+
+    header.main-header {
+        flex-direction: row;
+
+        nav {
+            display: flex;
+            flex-direction: row;
+
+            ul {
+                flex-direction: row;
+            }
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .search-form {
+        align-items: start;
+
+        .search-form__bar {
+            justify-content: start;
+        }
+
+        .search-form__input {
+            width: 90%;
+        }
+
+        .search-form__filters {
+            align-items: start;
+        }
+    }
+
+    .search-results-section {
+
+        h2 {
+            width: 100%;
+            max-width: 800px;
+            text-align: start;
+        }
+
+        ul.search-results {
+            max-width: 800px;
+        }
+
+        .search-results .search-result__item article {
+            flex-direction: row;
+            /* justify-content: space-between; */
+        }
+    }
+
+    .pagination {
+        gap: 0.5rem;
     }
 }
