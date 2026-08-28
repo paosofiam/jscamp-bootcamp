@@ -27,7 +27,7 @@ function renderJobs() {
 }
 
 // Ahora usamos la función
-searchForm?.addEventListener('change', renderJobs);
+searchForm?.addEventListener('change', renderJobs); //Graciaaaas, la verdad no lo había puesto así porque no sabía como se hacía... dejo una duda en dudas.md
 searchForm?.addEventListener('submit', (event) => {
     event.preventDefault();
     renderJobs();
