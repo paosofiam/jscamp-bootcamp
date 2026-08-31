@@ -15,4 +15,51 @@ Igual creo que en delante usaré el código proporcionado para que mis futuras e
 
 **Duda de arrow functions y event listeners:** En ./assets/scripts/fetch-data.js hiciste una mejora compactando mi código en la función renderJobs() y reusando dentro de varios event listeners... mi duda es, si esta función hubiese tenido parámetros, cómo habría invocado la función dentro del event listener? ya que el ejemplo en el código de llama sin paréntesis () solo con el nombre de la función, pero si hubiese tenido parámetros, cómo se los hubiera pasado???
 
+**Respuesta:**
 
+Muy buena pregunta! Si la función necesita parámetros se pasaría así:
+
+```js
+// Como se usa ahora SIN parámetros
+searchForm?.addEventListener('change', renderJobs);
+
+// Como se usaría ahora CON parámetros
+searchForm?.addEventListener('change', () => renderJobs(param1, param2));
+```
+
+Esto que hice de invocar la función sin `()` hay que usarlo SOLO cuando la función no necesita parámetros, porque internamente se traduce como:
+
+```js
+searchForm?.addEventListener('change', renderJobs);
+searchForm?.addEventListener('change', (...evt) => renderJobs(...evt)); // Es lo mismo que lo de arriba
+```
+
+`renderJobs()` como no tiene parámetros, no hay problema que le pasemos el evento completo porque no lo va a usar nunca.
+
+En cambio, si tiene parámetros y lo llamamos sin `()`, lo que estamos haciendo es pasarle todo el evento, cuando tal vez lo que esperamos en la función es un número.
+
+Te voy a dejar un ejemplo para que lo pruebes y veas tu misma como funciona:
+
+```js
+const showEventParams = (...evt) => {
+  console.log(`Los eventos que se reciben son: ${evt}`)
+}
+
+const sumNumbers = (num1, num2) => {
+  const result = num1 + num2
+  console.log(`Sumando ${num1} y ${num2} resulta en ${result}`)
+}
+
+const ignoreEvent = () => {
+  console.log('Como no recibimos el evento, no pasa nada que nos envíen parámetros.')
+}
+
+// Vas a ver como se envían muchos parámetros a `showEventParams`
+window.addEventListener('change', showEventParams);
+// Vas a ver que `sumNumbers` recibe parámetros aunque no pongamos `()` y como no son números se rompe.
+window.addEventListener('change', sumNumbers);
+// Vas a ver que al no recibir parametros, no pasa nada que le enviemos el evento completo.
+window.addEventListener('change', ignoreEvent);
+```
+
+Esto lo podes copiar en tu `fetch-data.js` y ver como funciona en la consola del navegador.
