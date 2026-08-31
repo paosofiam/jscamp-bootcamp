@@ -63,3 +63,5 @@ window.addEventListener('change', ignoreEvent);
 ```
 
 Esto lo podes copiar en tu `fetch-data.js` y ver como funciona en la consola del navegador.
+
+Muchas gracias por la explicación, no tengo más dudas
