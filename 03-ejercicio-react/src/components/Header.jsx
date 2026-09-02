@@ -1,4 +1,4 @@
-function Header() {
+export function Header() {
   return (
     <header>
         <a href="/" style={{ textDecoration: 'none' }}>
@@ -25,5 +25,3 @@ function Header() {
       </header>
   )
 }
-
-export { Header }
