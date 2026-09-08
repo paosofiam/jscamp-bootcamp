@@ -2,19 +2,19 @@
 
 ## Primera parte
 
-<!-- Dudas de la primera parte del ejercicio -->
+Sin dudas.
 
 ## Segunda parte
 
-<!-- Dudas de la segunda parte del ejercicio -->
+Sin dudas.
 
 ## Tercera parte
 
-<!-- Dudas de la tercera parte del ejercicio -->
+Sin dudas.
 
 ## Cuarta parte
 
-<!-- Dudas de la cuarta parte del ejercicio -->
+Sin dudas.
 
 ## Quinta parte
 
@@ -22,7 +22,7 @@
 
 ## Sexta parte
 
-<!-- Dudas de la sexta parte del ejercicio -->
+1. Sinceramente, conecté todas mis funciones de la paginación con los onClick con el código sugerido por IA, porque no me quedó claro la parte de los callbacks, no entiendo cómo llamar a una función 
 
 ## Séptima parte
 

@@ -1,7 +1,18 @@
-export function Pagination({ paginas, paginaActual }) {
+export function Pagination({ currentPage = 1, totalPages = 1, onClick }) {
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+    const isFirstPage = currentPage === 1;
+    const isLastPage = currentPage === totalPages;
+
+    const stylePrevButton = isFirstPage ? { pointerEvents: 'none', opacity: 0.5 } : {};
+    const styleNextButton = isLastPage ? { pointerEvents: 'none', opacity: 0.5 } : {};
+
     return (
         <nav className="pagination">
-            <a href="#">
+            <a href="#"
+                onClick={(e) => { e.preventDefault(); if (currentPage > 1) onClick(currentPage - 1); }}
+                style={stylePrevButton}
+                >
               <svg
                 width="16"
                 height="16"
@@ -16,17 +27,21 @@ export function Pagination({ paginas, paginaActual }) {
                 <path d="M15 6l-6 6l6 6" />
               </svg>
             </a>
-            {Array(paginas).fill().map((_, index) => (
-                <a 
-                    key={index + 1}
-                    data-page={index + 1} 
-                    href="#" 
-                    className={index + 1 === paginaActual ? "active" : undefined}
+            {pages.map(page => (
+                <a
+                    key={page}
+                    data-page={page}
+                    href="#"
+                    className={currentPage === page ? "is-active" : undefined}
+                    onClick={(e) => { e.preventDefault(); onClick(page); }}
                 >
-                    {index + 1}
+                    {page}
                 </a>
             ))}
-            <a href="#">
+            <a href="#"
+                onClick={(e) => { e.preventDefault(); if (currentPage < totalPages) onClick(currentPage + 1); }}
+                style={styleNextButton}
+                >
               <svg
                 width="16"
                 height="16"
