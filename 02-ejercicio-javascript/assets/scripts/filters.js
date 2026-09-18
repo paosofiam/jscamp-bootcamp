@@ -7,7 +7,12 @@ export function readFilters() {
     const contractTypeFilter = document.getElementById('contract-type-filter');
     const experienceLevelFilter = document.getElementById('experience-level-filter');
     filters.searchTerm = searchInput?.value?.toLowerCase().trim();
-    filters.technology = technologyFilter?.value;
+    // filters.technology = technologyFilter?.value;
+    // El select guarda valores como "JavaScript" o "C#", pero en data.json están escritos en minúsculas: "javascript" y "csharp". Por eso la comparación nunca coincidía, y el filtro de tecnología no encontraba ningún resultado.
+    // Pasamos el valor a minúsculas y traducimos los casos especiales para que coincidan con las tecnologías de data.json.
+    const techAliases = { 'c#': 'csharp' };
+    const rawTech = technologyFilter?.value?.toLowerCase();
+    filters.technology = techAliases[rawTech] ?? rawTech; // si hay traducción la usamos, si no, dejamos el valor tal cual
     filters.location = locationFilter?.value;
     filters.contract = contractTypeFilter?.value;
     filters.experience = experienceLevelFilter?.value?.toLowerCase();
@@ -16,13 +21,21 @@ export function readFilters() {
 }
 
 export function filterPaginateJobs(results, search, technology, location, contract, experience, jobsPerPage) {
-    let filteredJobs = [];
-    
-    results.forEach((job) => {
-        if ((!search || job?.titulo.toLowerCase().includes(search.toLowerCase())) && (!technology || job?.data?.technology.includes(technology)) && (!location || job?.ubicacion.toLowerCase().includes(location.toLowerCase())) && (!contract || job?.contract === contract) && (!experience || job?.data?.nivel === experience)) {
-            filteredJobs.push(job);
-        }
+    // Antes todo el filtrado estaba dentro de un "if" gigante de una sola línea que era muy difícil de leer.
+    // Ahora usamos .filter(), que recorre el arreglo y devuelve solo los empleos que pasan la prueba.
+    const filteredJobs = results.filter((job) => {
+        const matchesSearch = !search || job.titulo.toLowerCase().includes(search.toLowerCase());
+        const matchesTech = !technology || job.data?.technology.includes(technology);
+        const matchesLocation = !location || job.ubicacion.toLowerCase().includes(location.toLowerCase());
+        const matchesLevel = !experience || job.data?.nivel === experience;
+        return matchesSearch && matchesTech && matchesLocation && matchesLevel;
     });
+    
+    // results.forEach((job) => {
+    //     if ((!search || job?.titulo.toLowerCase().includes(search.toLowerCase())) && (!technology || job?.data?.technology.includes(technology)) && (!location || job?.ubicacion.toLowerCase().includes(location.toLowerCase())) && (!contract || job?.contract === contract) && (!experience || job?.data?.nivel === experience)) {
+    //         filteredJobs.push(job);
+    //     }
+    // });
     let pagedJobs = [];
     for (let i = 0; i < filteredJobs.length; i += jobsPerPage) {
         pagedJobs.push(filteredJobs.slice(i, i + jobsPerPage));
