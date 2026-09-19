@@ -1,1 +1,2 @@
 <!-- Aquí puedes poner tus dudas sobre el ejercicio -->
+Nota: desde el ejercicio de 03 de React no he ejecutado nada en terminal ni el navegador, ni tocado dependencias y no he probado el código, solo he implementado el código por la premura por la fecha límite, perdón si se me escapa algún error, si me piden corregir algo lo corrijo, si es parte del ejercicio hacer algo en terminal también lo corrijo. mil disculpas!
