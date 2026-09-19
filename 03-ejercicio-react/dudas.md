@@ -22,7 +22,7 @@ Sin dudas.
 
 ## Sexta parte
 
-1. Sinceramente, conecté todas mis funciones de la paginación con los onClick con el código sugerido por IA, porque no me quedó claro la parte de los callbacks, no entiendo cómo llamar a una función 
+1. Sinceramente, conecté todas mis funciones de la paginación con los onClick con el código sugerido por IA, porque no me quedó claro la parte de los callbacks, no entiendo cómo llamar a una función en el on click con parámetros y sin, es un tema de callbacks?
 
 ## Séptima parte
 

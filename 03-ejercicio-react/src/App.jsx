@@ -48,8 +48,16 @@ function App() {
   const [technologyValue, setTechnologyValue] = useState(() => getSearchParams().get('technology') || '');
   const [locationValue, setLocationValue] = useState(() => getSearchParams().get('location') || '');
   const [experienceLevelValue, setExperienceLevelValue] = useState(() => getSearchParams().get('experience') || '');
+  const [debouncedSearch, setDebouncedSearch] = useState(searchValue);
   const [jobs, setJobs] = useState([]);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchValue);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchValue]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -88,18 +96,21 @@ function App() {
     const params = new URLSearchParams();
     params.set('limit', JOBS_PER_PAGE);
     params.set('offset', (currentPage - 1) * JOBS_PER_PAGE);
-    if (searchValue) params.set('text', searchValue);//
+    if (debouncedSearch) params.set('text', debouncedSearch);
     if (technologyValue) params.set('technology', technologyValue);
     if (locationValue) params.set('type', locationValue);
     if (experienceLevelValue) params.set('level', experienceLevelValue);
 
     fetch(`${API_URL}?${params}`)
-      .then((res) => res.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((json) => {
         setJobs(json.data);
         setTotal(json.total);
-      });
-  }, [searchValue, technologyValue, locationValue, experienceLevelValue, currentPage]);
+      })
+      .catch((error) => console.error('Error al cargar los datos:', error));
+  }, [debouncedSearch, technologyValue, locationValue, experienceLevelValue, currentPage]);
 
 /*   const rawTech = technologyValue?.toLowerCase();
   const technology = TECH_ALIASES[rawTech] ?? rawTech;
