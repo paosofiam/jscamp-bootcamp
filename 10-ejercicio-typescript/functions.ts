@@ -1,7 +1,7 @@
 /* Aquí deberás usar los tipos creados en los ejercicios anteriores para definir los tipos de los parámetros y el valor de retorno de las funciones */
 
-import type { ExperienceLevel, Technology } from './types.ts'
 import type { Job } from './objects.ts'
+import type { ExperienceLevel, Technology } from './types.ts'
 
 export function filterByExperience(jobs: Job[], level: ExperienceLevel): Job[] {
   return jobs.filter((job) => job.experienceLevel === level)
@@ -9,7 +9,10 @@ export function filterByExperience(jobs: Job[], level: ExperienceLevel): Job[] {
 
 // Función para filtrar por tecnología
 export function filterByTechnology(jobs: Job[], tech: Technology): Job[] {
-  return jobs.filter((job) => job.technologies.includes(tech.toLowerCase()))
+  // toLowerCase() devolvía string genérico, los literales de Technology ya están en minúsculas
+  // return jobs.filter((job) => job.technologies.includes(tech.toLowerCase()))
+  // Esto es un error nuestro a la hora de hacer el ejercicio, así que no te preocupes, pusimos un `toLowerCase()` en el ejercicio innecesario
+  return jobs.filter((job) => job.technologies.includes(tech))
 }
 
 // Función para filtrar por salario mínimo
